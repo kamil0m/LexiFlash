@@ -9,7 +9,11 @@ export default function Flashcard() {
     const client = useSupabase();
 
     useEffect(() => {
-        if (null === client) return loadFlashcards() //to rewrite
+        if (null === client) {
+            return
+        }
+
+        loadFlashcards()
     }, [client]);
 
     const loadFlashcards = async () => {
