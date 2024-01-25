@@ -1,6 +1,9 @@
 import {Container, Navbar} from "react-bootstrap";
 import logo from "../assets/react.svg";
-import {Outlet} from "react-router-dom";
+import {
+    Link,
+    Outlet
+} from 'react-router-dom';
 
 export default function MainLayout() {
     return (
@@ -17,7 +20,10 @@ export default function MainLayout() {
                         />
                         Dashboard
                     </Navbar.Brand>
-
+                    <ul>
+                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/learn">Trainer</Link></li>
+                    </ul>
                 </Container>
             </Navbar>
 

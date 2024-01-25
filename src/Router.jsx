@@ -1,7 +1,7 @@
 import ListFlashcards from "./components/flashcard/ListFlashcards.jsx";
 import Trainer from "./components/flashcard/Trainer.jsx";
 import {SupabaseProvider} from "./context/SupabaseContext.jsx";
-// import MainLayout from "./layout/MainLayout.jsx";
+import MainLayout from "./layout/MainLayout.jsx";
 import {
     BrowserRouter,
     Route,
@@ -15,8 +15,10 @@ function Router() {
         <SupabaseProvider>
             <BrowserRouter>
                 <Routes>
-                    <Route path='/' element={<ListFlashcards />} />
-                    <Route path='learn' element={<Trainer />} />
+                    <Route path="/" element={<MainLayout />}>
+                        <Route path='/' element={<ListFlashcards />} />
+                        <Route path='learn' element={<Trainer />} />
+                    </Route>
                 </Routes>
             </BrowserRouter>
         </SupabaseProvider>
