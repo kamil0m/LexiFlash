@@ -1,16 +1,22 @@
-import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Flashcard from "./components/flashcard/Flashcard.jsx";
+import ListFlashcards from "./components/flashcard/ListFlashcards.jsx";
+import Trainer from "./components/flashcard/Trainer.jsx";
 import {SupabaseProvider} from "./context/SupabaseContext.jsx";
-import MainLayout from "./layout/MainLayout.jsx";
+// import MainLayout from "./layout/MainLayout.jsx";
+import {
+    BrowserRouter,
+    Route,
+    Routes,
+    Link,
+    NavLink
+} from "react-router-dom";
 
 function Router() {
     return (
         <SupabaseProvider>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<MainLayout/>}>
-                        <Route index element={<Flashcard/>}/>
-                    </Route>
+                    <Route path='/' element={<ListFlashcards />} />
+                    <Route path='learn' element={<Trainer />} />
                 </Routes>
             </BrowserRouter>
         </SupabaseProvider>
