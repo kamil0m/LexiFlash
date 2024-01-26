@@ -45,8 +45,9 @@ export default function Trainer() {
 
     return <>
         <div>
-            <h1>{currentFlashcard.def}</h1>
+            <h1>FR: {currentFlashcard.def}</h1>
+            <h1>EN: {currentFlashcard.lex}</h1>
         </div>
-        <AnswerBox correctAnswer={currentFlashcard.lex} />
+        <AnswerBox correctAnswer={currentFlashcard} />
     </>
 }
