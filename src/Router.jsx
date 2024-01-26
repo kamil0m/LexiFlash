@@ -1,13 +1,12 @@
 import ListFlashcards from "./components/flashcard/ListFlashcards.jsx";
 import Trainer from "./components/flashcard/Trainer.jsx";
+import Test from "./components/flashcard/Test.jsx";
 import {SupabaseProvider} from "./context/SupabaseContext.jsx";
 import MainLayout from "./layout/MainLayout.jsx";
 import {
     BrowserRouter,
     Route,
-    Routes,
-    Link,
-    NavLink
+    Routes
 } from "react-router-dom";
 
 function Router() {
@@ -17,7 +16,8 @@ function Router() {
                 <Routes>
                     <Route path="/" element={<MainLayout />}>
                         <Route path='/' element={<ListFlashcards />} />
-                        <Route path='learn' element={<Trainer />} />
+                        <Route path='/learn' element={<Trainer />} />
+                        <Route path='/test' element={<Test />} />
                     </Route>
                 </Routes>
             </BrowserRouter>
