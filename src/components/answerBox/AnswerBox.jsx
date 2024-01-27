@@ -1,13 +1,21 @@
+import {editFlashcard} from "../../repository/flashcardMethods.js";
 import {useState, useEffect} from "react";
+import {useSupabase} from "../../hooks/supabase.js";
+
 
 export default function AnswerBox({correctAnswer}) {
 
     const [answer, setAnswer] = useState();
     const [wrongMessage, setWrongMessage] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
+    const client = useSupabase();
 
     function handleCorrect() {
-        console.log("correct!")
+        console.log("correct!");
+        const learntFlashcard = answer;
+        correctAnswer.status < 5 && correctAnswer.status++;
+        console.log(correctAnswer.status);
+        editFlashcard(client, correctAnswer);
     }
     function handleIncorrect() {
         console.log(`Incorrect ! Correct answer is blabla`);
