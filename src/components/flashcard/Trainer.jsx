@@ -37,17 +37,27 @@ export default function Trainer() {
         if (dataReady) {
             const randomFlashcard = getRandomFlashcard();
             setCurrentFlashcard(randomFlashcard);
+            console.log(randomFlashcard);
         }
     }, [dataReady]);
     function getRandomFlashcard(){
         return flashcards[getRandomNumber(0, flashcards.length)]
     }
 
+    function switchFlashcards() {
+        setDataReady(false); // Set dataReady flag when flashcards are loaded
+        console.log("Data not ready");
+        setDataReady(true); // Set dataReady flag when flashcards are loaded
+        console.log("Data ready");
+        const randomFlashcard = getRandomFlashcard();
+        setCurrentFlashcard(randomFlashcard);
+    }
+
     return <>
         <div>
-            <h1>FR: {currentFlashcard.def}</h1>
-            <h1>EN: {currentFlashcard.lex}</h1>
+            <h1>{currentFlashcard.def}</h1>
+            {/*<h1>EN: {currentFlashcard.lex}</h1>*/}
         </div>
-        <AnswerBox correctAnswer={currentFlashcard} />
+        <AnswerBox correctAnswer={currentFlashcard} switchFlashcards={switchFlashcards}/>
     </>
 }

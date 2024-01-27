@@ -3,19 +3,19 @@ import {useState, useEffect} from "react";
 import {useSupabase} from "../../hooks/supabase.js";
 
 
-export default function AnswerBox({correctAnswer}) {
+export default function AnswerBox({correctAnswer, switchFlashcards}) {
 
-    const [answer, setAnswer] = useState();
+    const [answer, setAnswer] = useState("");
     const [wrongMessage, setWrongMessage] = useState("");
-    const [successMessage, setSuccessMessage] = useState("");
     const client = useSupabase();
 
-    function handleCorrect() {
-        console.log("correct!");
-        const learntFlashcard = answer;
+    function handleCorrect(e) {
         correctAnswer.status < 5 && correctAnswer.status++;
-        console.log(correctAnswer.status);
+        console.log("correct answer!")
         editFlashcard(client, correctAnswer);
+        switchFlashcards();
+        setAnswer("");
+
     }
     function handleIncorrect() {
         console.log(`Incorrect ! Correct answer is blabla`);
@@ -38,7 +38,8 @@ export default function AnswerBox({correctAnswer}) {
 
     return <form className="answer__box">
         <label htmlFor="answer">Type your answer below:</label>
-        <input type="text" className="answer" id="answer" onChange={(e) => setAnswer(e.target.value)} />
+        {/*<input type="text" className="answer" id="answer" onChange={(e) => setAnswer(e.target.value)} />*/}
+        <input type="text" className="answer" id="answer" value={answer} onChange={(e) => setAnswer(e.target.value)} />
         <button type={"submit"} onClick={handleSubmit}>Potwierdz</button>
         <p style={{color: "red"}}>{wrongMessage}</p>
     </form>

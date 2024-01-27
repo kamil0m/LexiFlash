@@ -49,6 +49,7 @@ export default function Editor() {
                             <th>English</th>
                             <th>French</th>
                             <th>Status</th>
+                            <th>Edit</th>
                         </tr>
                         </thead>
                         <tbody onClick={(event) => handleRemove(event)}>

@@ -5,6 +5,10 @@ export default function ListFlashcards({flashcards}) {
                 <td>{flashcard.lex}</td>
                 <td>{flashcard.def}</td>
                 <td>{flashcard.status}</td>
+                <td>
+                    <button>edit</button>
+                    <button>delete</button>
+                </td>
             </tr>
     ))
 }
