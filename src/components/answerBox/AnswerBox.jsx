@@ -38,7 +38,6 @@ export default function AnswerBox({correctAnswer, switchFlashcards}) {
 
     return <form className="answer__box">
         <label htmlFor="answer">Type your answer below:</label>
-        {/*<input type="text" className="answer" id="answer" onChange={(e) => setAnswer(e.target.value)} />*/}
         <input type="text" className="answer" id="answer" value={answer} onChange={(e) => setAnswer(e.target.value)} />
         <button type={"submit"} onClick={handleSubmit}>Potwierdz</button>
         <p style={{color: "red"}}>{wrongMessage}</p>

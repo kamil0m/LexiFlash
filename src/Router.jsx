@@ -1,6 +1,5 @@
 import Editor from "./components/flashcard/Editor.jsx";
 import Trainer from "./components/flashcard/Trainer.jsx";
-import Test from "./components/flashcard/Test.jsx";
 import {SupabaseProvider} from "./context/SupabaseContext.jsx";
 import MainLayout from "./layout/MainLayout.jsx";
 import {
@@ -17,7 +16,7 @@ function Router() {
                     <Route path="/" element={<MainLayout />}>
                         <Route path='/' element={<Editor />} />
                         <Route path='/learn' element={<Trainer />} />
-                        <Route path='/test' element={<Test />} />
+                        <Route path='/editor' element={<Editor />} />
                     </Route>
                 </Routes>
             </BrowserRouter>

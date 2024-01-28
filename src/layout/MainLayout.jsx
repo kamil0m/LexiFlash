@@ -21,9 +21,9 @@ export default function MainLayout() {
                         Dashboard
                     </Navbar.Brand>
                     <ul>
-                        <li><Link to="/">List</Link></li>
+                        <li><Link to="/">Home</Link></li>
                         <li><Link to="/learn">Trainer</Link></li>
-                        <li><Link to="/test">Test</Link></li>
+                        <li><Link to="/editor">Editor</Link></li>
                     </ul>
                 </Container>
             </Navbar>

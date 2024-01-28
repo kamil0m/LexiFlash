@@ -1,8 +1,9 @@
-import {getFlashcards, removeFlashcard} from "../../repository/flashcardMethods.js";
+import {addFlashcard, getFlashcards, removeFlashcard} from "../../repository/flashcardMethods.js";
 import {useSupabase} from "../../hooks/supabase.js";
 import {useState, useEffect} from "react";
-import {Card, Container, Row, Table} from "react-bootstrap";
+import {Card, Row, Table, Modal} from "react-bootstrap";
 import ListFlashcards from "./ListFlashcards.jsx";
+import CreateFlashcard from "./CreateFlashcard.jsx";
 
 
 export default function Editor() {
@@ -22,6 +23,11 @@ export default function Editor() {
         setFlashcards(data);
     }
 
+    const handleAdd = (newFlashcard) => {
+        addFlashcard(client, newFlashcard);
+        setFlashcards(prevState => [...prevState, newFlashcard]);
+    }
+
     const handleRemove = (event) => {
         if (undefined === event.target.dataset.id) return
 
@@ -36,9 +42,7 @@ export default function Editor() {
                 <Card.Header>
                     <Row className="justify-content-between align-items-center">
                         <h4 className="col-6 mb-0">Flashcards list</h4>
-                        <div className="d-flex justify-content-end gap-3 col-6"> Tu bedzie addFlashcard
-                            {/*<AddProduct handleFormSubmit={handleAdd}/>*/}
-                        </div>
+                        <CreateFlashcard handleAdd={handleAdd}/>
                     </Row>
                 </Card.Header>
                 <Card.Body>
