@@ -3,7 +3,7 @@ import {useSupabase} from "../../hooks/supabase.js";
 import {useState, useEffect} from "react";
 import {Card, Row, Table, Modal} from "react-bootstrap";
 import ListFlashcards from "./ListFlashcards.jsx";
-import CreateFlashcard from "./CreateFlashcard.jsx";
+import NewFlashcardButton from "../AddNewFlashcard/NewFlashcardButton.jsx";
 
 
 export default function Editor() {
@@ -23,7 +23,7 @@ export default function Editor() {
         setFlashcards(data);
     }
 
-    const handleAdd = (newFlashcard) => {
+    function handleAdd(newFlashcard){
         addFlashcard(client, newFlashcard);
         setFlashcards(prevState => [...prevState, newFlashcard]);
     }
@@ -42,7 +42,7 @@ export default function Editor() {
                 <Card.Header>
                     <Row className="justify-content-between align-items-center">
                         <h4 className="col-6 mb-0">Flashcards list</h4>
-                        <CreateFlashcard handleAdd={handleAdd}/>
+                        <NewFlashcardButton handleAdd={handleAdd}/>
                     </Row>
                 </Card.Header>
                 <Card.Body>
