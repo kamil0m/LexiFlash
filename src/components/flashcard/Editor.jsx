@@ -32,14 +32,15 @@ export default function Editor() {
         if (undefined === event.target.parentNode.parentNode.id) {
             return
         }
-        const id = event.target.parentNode.parentNode.id;
+        const id = event.target.parentNode.parentNode.id
         removeFlashcard(client, id);
         setFlashcards((prevState) => prevState.filter((flashcard) => flashcard.id != id))
     }
 
     const handleEdit = (editedFlashcard) => {
-        editFlashcard(client, editedFlashcard);
-        //setFlashcards(); Dopisz wypisywanie zaaktualizowanego zestawu slow
+        editFlashcard(client, editedFlashcard)
+        setFlashcards((prevState) => prevState.filter((flashcard) => flashcard.id !== editedFlashcard.id))
+        setFlashcards((prevState) => [...prevState, editedFlashcard]);
     }
 
     return (

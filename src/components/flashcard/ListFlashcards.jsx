@@ -1,4 +1,3 @@
-import NewFlashcardButton from "../AddNewFlashcard/NewFlashcardButton.jsx";
 import EditFlashcardButton from "../AddNewFlashcard/EditFlashcardButton.jsx";
 
 export default function ListFlashcards({flashcards, handleRemove, handleEdit}) {
@@ -10,7 +9,7 @@ export default function ListFlashcards({flashcards, handleRemove, handleEdit}) {
                 <td>{flashcard.status}</td>
                 <td>
                     <EditFlashcardButton flashcard={flashcard} handleEdit={handleEdit}/>
-                    <button onClick={(event) => handleRemove(event)}>delete</button>
+                    <button className="btn btn-danger col-5 mb-0" onClick={(event) => handleRemove(event)}>Delete</button>
                 </td>
             </tr>
     ))
