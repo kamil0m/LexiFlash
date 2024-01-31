@@ -1,4 +1,4 @@
-import {addFlashcard, getFlashcards, removeFlashcard} from "../../repository/flashcardMethods.js";
+import {addFlashcard, getFlashcards, removeFlashcard, editFlashcard} from "../../repository/flashcardMethods.js";
 import {useSupabase} from "../../hooks/supabase.js";
 import {useState, useEffect} from "react";
 import {Card, Row, Table, Modal} from "react-bootstrap";
@@ -29,11 +29,17 @@ export default function Editor() {
     }
 
     const handleRemove = (event) => {
-        if (undefined === event.target.dataset.id) return
+        if (undefined === event.target.parentNode.parentNode.id) {
+            return
+        }
+        const id = event.target.parentNode.parentNode.id;
+        removeFlashcard(client, id);
+        setFlashcards((prevState) => prevState.filter((flashcard) => flashcard.id != id))
+    }
 
-        const id = event.target.dataset.id;
-        removeFlashcard(client, sid);
-        setProducts((prevState) => prevState.filter((product) => product.sid !== sid))
+    const handleEdit = (editedFlashcard) => {
+        editFlashcard(client, editedFlashcard);
+        //setFlashcards(); Dopisz wypisywanie zaaktualizowanego zestawu slow
     }
 
     return (
@@ -56,8 +62,8 @@ export default function Editor() {
                             <th>Edit</th>
                         </tr>
                         </thead>
-                        <tbody onClick={(event) => handleRemove(event)}>
-                        <ListFlashcards flashcards={flashcards} />
+                        <tbody>
+                        <ListFlashcards flashcards={flashcards} handleRemove={handleRemove} handleEdit={handleEdit}/>
                         </tbody>
                     </Table>
                 </Card.Body>

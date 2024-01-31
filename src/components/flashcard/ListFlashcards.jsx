@@ -1,13 +1,16 @@
-export default function ListFlashcards({flashcards}) {
+import NewFlashcardButton from "../AddNewFlashcard/NewFlashcardButton.jsx";
+import EditFlashcardButton from "../AddNewFlashcard/EditFlashcardButton.jsx";
+
+export default function ListFlashcards({flashcards, handleRemove, handleEdit}) {
     return flashcards.map(flashcard => (
-            <tr key={flashcard.id}>
+            <tr key={flashcard.id} id={flashcard.id}>
                 <td>{flashcard.category}</td>
                 <td>{flashcard.lex}</td>
                 <td>{flashcard.def}</td>
                 <td>{flashcard.status}</td>
                 <td>
-                    <button>edit</button>
-                    <button>delete</button>
+                    <EditFlashcardButton flashcard={flashcard} handleEdit={handleEdit}/>
+                    <button onClick={(event) => handleRemove(event)}>delete</button>
                 </td>
             </tr>
     ))

@@ -1,7 +1,6 @@
 import {Button} from 'react-bootstrap';
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import NewFlashcardForm from "./NewFlashcardForm.jsx";
-import {addFlashcard} from "../../repository/flashcardMethods.js";
 
 export default function NewFlashcardButton({handleAdd}) {
 

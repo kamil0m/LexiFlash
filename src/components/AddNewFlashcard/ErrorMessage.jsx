@@ -12,3 +12,4 @@ export default function ErrorMessage({setShowErrorMessage}) {
         Please complete all form fields
     </p>
 }
+//Dodaj cleartimeout
