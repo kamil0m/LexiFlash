@@ -1,7 +1,7 @@
 import {Container, Navbar} from "react-bootstrap";
 import logo from "../assets/react.svg";
 import {
-    Link,
+    NavLink,
     Outlet
 } from 'react-router-dom';
 
@@ -11,19 +11,19 @@ export default function MainLayout() {
             <Navbar className="mb-5" bg="dark" data-bs-theme="dark">
                 <Container className="col-12 col-lg-8 mx-auto">
                     <Navbar.Brand>
-                        <img
+                        <a href={"/"}>
+                            <img
                             alt="logo"
                             src={logo}
                             width="30"
                             height="30"
-                            className="d-inline-block align-top me-2"
-                        />
-                        Dashboard
+                            className="d-inline-block align-top me-2" />
+                        </a>
+                        LEXIFLASH
                     </Navbar.Brand>
                     <ul>
-                        <li><Link to="/">Home</Link></li>
-                        <li><Link to="/learn">Trainer</Link></li>
-                        <li><Link to="/editor">Editor</Link></li>
+                        <NavLink to="/learn">Trainer</NavLink>
+                        <NavLink to="/editor">Editor</NavLink>
                     </ul>
                 </Container>
             </Navbar>
