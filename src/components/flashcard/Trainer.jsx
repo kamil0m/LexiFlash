@@ -46,17 +46,18 @@ export default function Trainer() {
 
     function switchFlashcards() {
         setDataReady(false); // Set dataReady flag when flashcards are loaded
-        console.log("Data not ready");
         setDataReady(true); // Set dataReady flag when flashcards are loaded
-        console.log("Data ready");
         const randomFlashcard = getRandomFlashcard();
         setCurrentFlashcard(randomFlashcard);
     }
 
     return <>
-        <div>
-            <h1>{currentFlashcard.def}</h1>
-        </div>
+        <h1 className="set__title">{currentFlashcard.category}</h1>
+        <input type="checkbox" id="flashcard__flip-trigger" />
+        <label htmlFor="flashcard__flip-trigger" className="flashcard">
+            <p className="flashcard__front">{currentFlashcard.def}</p>
+            <p className="flashcard__back">{currentFlashcard.lex}</p>
+        </label>
         <AnswerBox correctAnswer={currentFlashcard} switchFlashcards={switchFlashcards}/>
     </>
 }

@@ -1,0 +1,86 @@
+@use "../variables/colors";
+@use "../variables/fonts";
+@use "../variables/spaces";
+@use "../variables/shapes";
+
+body {
+  font-family: fonts.$font-primary;
+}
+
+.main {
+  height: calc(100vh - spaces.$height-header);
+  background-color: colors.$color-background;
+}
+
+.main__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .set__title {
+    margin: 3rem 0;
+  }
+
+  .flashcard {
+    height: 200px;
+    width: 300px;
+    border: 1px solid colors.$color-secondary;
+    border-radius: shapes.$radius-main;
+    transition: transform 1.5s;
+    transform-style: preserve-3d;
+  }
+}
+
+.flashcard__front,
+.flashcard__back {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  backface-visibility: hidden;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom;
+  background-image: url("../../assets/logo_IA_blanc_vect.svg");
+  filter: invert(4%);
+}
+
+.flashcard__front {
+  cursor: pointer;
+}
+
+.flashcard__back {
+  transform: rotateY(180deg);
+}
+
+#flashcard__flip-trigger {
+  display: none;
+}
+
+input:checked ~.flashcard {
+  transform: rotateY(180deg);
+  background-color: rgba(colors.$color-primary, 0.7);
+}
+
+.answer__box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .answer {
+    height: 100px;
+    width: 300px;
+    border: 1px solid colors.$color-secondary;
+    border-radius: shapes.$radius-main;
+    padding: 1rem;
+    text-align: center;
+    margin: 20% 0 2% 0;
+
+    &:focus {
+      border: 2px solid colors.$color-primary;
+      outline: none;
+    }
+  }
+}

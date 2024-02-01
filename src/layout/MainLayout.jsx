@@ -28,7 +28,7 @@ export default function MainLayout() {
                 </Container>
             </Navbar>
 
-            <Container className="col-12 col-lg-8 mx-auto">
+            <Container className="col-12 col-lg-8 mx-auto main__container">
                 <Outlet/>
             </Container>
         </>

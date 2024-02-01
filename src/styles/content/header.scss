@@ -1,0 +1,86 @@
+@use "../variables/colors";
+@use "../modules/mixins";
+@use "../variables/spaces";
+
+.header {
+  background-color: colors.$color-primary;
+  color: colors.$color-background;
+  height: spaces.$height-header;
+}
+
+.nav {
+  height: spaces.$height-header;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  .logo {
+    background-image: url("../assets/IA_Logo-web_blanc.png");
+    height: calc(262px / 6);
+    width: calc(1133px / 6);
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 0.5rem 0 0 0;
+  }
+
+  .hamburger-menu {
+    @include mixins.tablet {
+      display:none;
+    }
+
+    i {
+      font-size: 2rem;
+    }
+  }
+
+  input#trigger-menu {
+    display: none;
+  }
+
+  .navbar__links {
+    display: none;
+
+    @include mixins.tablet {
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar__element {
+      list-style-type: none;
+      text-transform: uppercase;
+      border-bottom: 3px solid transparent;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      position: relative;
+
+      &:hover {
+        border-bottom: 3px solid rgba(colors.$color-background, 0.5);
+      }
+
+      @include mixins.tablet {
+        margin-left: 2rem;
+        height: spaces.$height-header;
+      }
+    }
+
+    @include mixins.tablet {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  input#trigger-menu:checked ~ .navbar__links {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    top: spaces.$height-header;
+    background-color: colors.$color-primary;
+    padding: spaces.$padding-container;
+    border-radius: 0 0 0 25px;
+  }
+}
