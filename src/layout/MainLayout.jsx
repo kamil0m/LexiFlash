@@ -8,22 +8,14 @@ import {
 export default function MainLayout() {
     return (
         <>
-            <Navbar className="mb-5" bg="dark" data-bs-theme="dark">
-                <Container className="col-12 col-lg-8 mx-auto">
+            <Navbar className="header">
+                <Container className="col-12 col-lg-8 mx-auto nav">
                     <Navbar.Brand>
-                        <a href={"/"}>
-                            <img
-                            alt="logo"
-                            src={logo}
-                            width="30"
-                            height="30"
-                            className="d-inline-block align-top me-2" />
-                        </a>
-                        LEXIFLASH
+                        <NavLink to="/" className="logo" />
                     </Navbar.Brand>
-                    <ul>
-                        <NavLink to="/learn">Trainer</NavLink>
-                        <NavLink to="/editor">Editor</NavLink>
+                    <ul className="navbar__links">
+                        <NavLink className="navbar__element" to="/learn">play</NavLink>
+                        <NavLink className="navbar__element" to="/editor">edit</NavLink>
                     </ul>
                 </Container>
             </Navbar>

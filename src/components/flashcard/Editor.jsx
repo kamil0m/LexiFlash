@@ -8,7 +8,19 @@ import NewFlashcardButton from "../AddNewFlashcard/NewFlashcardButton.jsx";
 
 export default function Editor() {
     const [flashcards, setFlashcards] = useState([]);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
     const client = useSupabase();
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+        };
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     useEffect(() => {
         if (null === client) {
@@ -59,7 +71,7 @@ export default function Editor() {
                             <th>Category</th>
                             <th>English</th>
                             <th>French</th>
-                            <th>Status</th>
+                            <th>{windowWidth < 650 ? 'St.' : 'Status'}</th>
                             <th>Edit</th>
                         </tr>
                         </thead>

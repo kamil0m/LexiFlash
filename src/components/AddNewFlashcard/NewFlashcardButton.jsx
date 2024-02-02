@@ -13,7 +13,7 @@ export default function NewFlashcardButton({handleAdd}) {
     return (
         <>
             <Button className="col-1 mb-0" variant="primary" onClick={() => setModalShow(true)}>
-                +
+                <i className="fa-regular fa-plus"></i>
             </Button>
 
             <NewFlashcardForm

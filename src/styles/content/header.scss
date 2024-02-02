@@ -3,7 +3,7 @@
 @use "../variables/spaces";
 
 .header {
-  background-color: colors.$color-primary;
+  background-color: colors.$color-primary!important;
   color: colors.$color-background;
   height: spaces.$height-header;
 }
@@ -22,43 +22,31 @@
     display: inline-block;
     background-size: contain;
     background-repeat: no-repeat;
-    margin: 0.5rem 0 0 0;
-  }
-
-  .hamburger-menu {
-    @include mixins.tablet {
-      display:none;
-    }
-
-    i {
-      font-size: 2rem;
-    }
-  }
-
-  input#trigger-menu {
-    display: none;
+    margin: 0.5rem 0 0 0.5rem;
   }
 
   .navbar__links {
-    display: none;
-
-    @include mixins.tablet {
-      display: flex;
-      align-items: center;
-    }
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
 
     .navbar__element {
       list-style-type: none;
+      text-decoration: none;
       text-transform: uppercase;
       border-bottom: 3px solid transparent;
       font-size: 1.5rem;
       display: flex;
       align-items: center;
       position: relative;
+      padding: 1rem;
+      color: colors.$color-background;
 
       &:hover {
         border-bottom: 3px solid rgba(colors.$color-background, 0.5);
       }
+
 
       @include mixins.tablet {
         margin-left: 2rem;
@@ -70,17 +58,5 @@
       display: flex;
       justify-content: space-between;
     }
-  }
-
-  input#trigger-menu:checked ~ .navbar__links {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    z-index: 2;
-    right: 0;
-    top: spaces.$height-header;
-    background-color: colors.$color-primary;
-    padding: spaces.$padding-container;
-    border-radius: 0 0 0 25px;
   }
 }

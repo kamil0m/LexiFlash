@@ -3,14 +3,14 @@
 @use "../variables/spaces";
 @use "../variables/shapes";
 
-body {
+* {
   font-family: fonts.$font-primary;
 }
 
-.main {
-  height: calc(100vh - spaces.$height-header);
-  background-color: colors.$color-background;
-}
+//.main {
+//  height: calc(100vh - spaces.$height-header);
+//  background-color: colors.$color-background;
+//}
 
 .main__container {
   display: flex;
@@ -19,6 +19,7 @@ body {
 
   .set__title {
     margin: 3rem 0;
+    text-transform: uppercase;
   }
 
   .flashcard {
@@ -44,7 +45,7 @@ body {
   background-size: contain;
   background-position: bottom;
   background-image: url("../../assets/logo_IA_blanc_vect.svg");
-  filter: invert(4%);
+  filter: invert(40%);
 }
 
 .flashcard__front {

@@ -13,7 +13,7 @@ export default function EditFlashcardButton({flashcard, handleEdit}) {
     return (
         <>
             <Button className="col-5 mb-0" variant="primary" onClick={() => setModalShow(true)}>
-                Edit
+                <i className="fa-regular fa-pen-to-square"></i>
             </Button>
 
             <EditFlashcardForm
