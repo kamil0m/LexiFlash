@@ -1,5 +1,4 @@
 @use "../variables/colors";
-@use "../modules/mixins";
 @use "../variables/spaces";
 
 .header {
@@ -46,17 +45,7 @@
       &:hover {
         border-bottom: 3px solid rgba(colors.$color-background, 0.5);
       }
-
-
-      @include mixins.tablet {
-        margin-left: 2rem;
-        height: spaces.$height-header;
-      }
     }
 
-    @include mixins.tablet {
-      display: flex;
-      justify-content: space-between;
-    }
   }
 }

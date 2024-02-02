@@ -26,7 +26,7 @@ export default function AnswerBox({correctAnswer, switchFlashcards}) {
     function handleSubmit(e) {
         e.preventDefault();
         console.log("Typed answer is " + answer);
-        answer === correctAnswer.lex ? handleCorrect() : handleIncorrect();
+        answer.toUpperCase() === correctAnswer.lex.toUpperCase() ? handleCorrect() : handleIncorrect();
     }
 
     useEffect(() => {
