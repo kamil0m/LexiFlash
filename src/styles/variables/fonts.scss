@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'cronos_proregular';
+    src: url('../assets/cronos-pro-webfont.woff2') format('woff2'),
+         url('../assets/cronos-pro-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+$font-primary: cronos_proregular, sans-serif;
