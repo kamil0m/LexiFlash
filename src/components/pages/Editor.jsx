@@ -9,7 +9,6 @@ import NewFlashcardButton from "../AddNewFlashcard/NewFlashcardButton.jsx";
 export default function Editor() {
     const [flashcards, setFlashcards] = useState([]);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
     const client = useSupabase();
 
     useEffect(() => {
