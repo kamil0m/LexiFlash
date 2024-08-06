@@ -1,0 +1,51 @@
+@use "../variables/colors";
+@use "../variables/spaces";
+
+.header {
+  background-color: colors.$color-primary!important;
+  color: colors.$color-background;
+  height: spaces.$height-header;
+}
+
+.nav {
+  height: spaces.$height-header;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  .logo {
+    //background-image: url("../assets/IA_Logo-web_blanc.png");
+    height: calc(262px / 6);
+    width: calc(1133px / 6);
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 0.5rem 0 0 0.5rem;
+  }
+
+  .navbar__links {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+
+    .navbar__element {
+      list-style-type: none;
+      text-decoration: none;
+      text-transform: uppercase;
+      border-bottom: 3px solid transparent;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding: 1rem;
+      color: colors.$color-background;
+
+      &:hover {
+        border-bottom: 3px solid rgba(colors.$color-background, 0.5);
+      }
+    }
+
+  }
+}
