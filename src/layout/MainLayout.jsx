@@ -13,7 +13,7 @@ export default function MainLayout() {
                         <NavLink to="/" className="logo" />
                     </Navbar.Brand>
                     <ul className="navbar__links">
-                        <NavLink className="navbar__element" to="/learn">play</NavLink>
+                        <NavLink className="navbar__element" to="/learn">learn</NavLink>
                         <NavLink className="navbar__element" to="/editor">edit</NavLink>
                     </ul>
                 </Container>

@@ -24,8 +24,7 @@ export default function ListFlashcards({flashcards, handleAction}) {
             <td>{flashcard.status}</td>
             <td>
                 <EditFlashcardButton flashcard={flashcard} handleAction={handleAction}/>
-                <button className="btn btn-danger col-5 mb-0" onClick={(event) => handleAction(event)}><i className="fa-regular fa-trash-can"></i></button>
-                <button className="btn btn-danger col-5 mb-0" onClick={handleAction}><i className="fa-regular fa-trash"></i></button>
+                <button className="btn btn-danger col-5 mb-0" data-action="remove" onClick={(event) => handleAction(event)}><i className="fa-regular fa-trash-can"></i></button>
             </td>
         </tr>
     ))

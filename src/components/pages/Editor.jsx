@@ -1,4 +1,4 @@
-import {addFlashcard, getFlashcards, removeFlashcard, editFlashcard} from "../../repository/flashcardMethods.js";
+import {addTestFlashcard, addFlashcard, getFlashcards, removeFlashcard, editFlashcard} from "../../repository/flashcardMethods.js";
 import {useSupabase} from "../../hooks/supabase.js";
 import {useState, useEffect} from "react";
 import {Card, Row, Table, Modal} from "react-bootstrap";
@@ -39,14 +39,20 @@ export default function Editor() {
         setFlashcards(prevState => [...prevState, newFlashcard]);
     }
 
-    const handleRemove = (event) => {
-        if (undefined === event.target.parentNode.parentNode.id) {
-            return
-        }
-        const id = event.target.parentNode.parentNode.id
-        removeFlashcard(client, id);
-        setFlashcards((prevState) => prevState.filter((flashcard) => flashcard.id != id))
+    async function handleAddTest(){
+        await addTestFlashcard(client);
+        location.reload()
+        // setFlashcards(prevState => [...prevState, newFlashcard]);
     }
+
+    // const handleRemove = (event) => {
+    //     if (undefined === event.target.parentNode.parentNode.id) {
+    //         return
+    //     }
+    //     const id = event.target.parentNode.parentNode.id
+    //     removeFlashcard(client, id);
+    //     setFlashcards((prevState) => prevState.filter((flashcard) => flashcard.id != id))
+    // }
 
     const handleEdit = (editedFlashcard) => {
         console.log(e.target);
@@ -56,8 +62,22 @@ export default function Editor() {
     }
 
     const handleAction = (e) => {
-        console.log(e.target.database);
-        const action = e.target.dataset.get('action');
+        const action = e.target.closest('[data-action]').dataset.action;
+        console.log(action);
+        // console.log(e.target.dataset.action);
+        // console.log(e.target.closest('[data-action]').dataset.action);
+        // console.log(e.target.dataset.closest('[data-action]'.dataset.action));
+        // const action = e.target.dataset.get('action');
+        // const action = e.target.dataset.acction/
+        switch (action) {
+            case "remove":
+                if (undefined === event.target.parentNode.parentNode.id) {
+                    return
+                }
+                const id = event.target.closest('[id]').id
+                removeFlashcard(client, id);
+                setFlashcards((prevState) => prevState.filter((flashcard) => flashcard.id != id))
+        }
     }
 
     return (
@@ -66,6 +86,7 @@ export default function Editor() {
                 <Card.Header>
                     <Row className="justify-content-between align-items-center">
                         <h4 className="col-6 mb-0">Flashcards list</h4>
+                        <button onClick={handleAddTest}>Test</button>
                         <NewFlashcardButton handleAdd={handleAdd}/>
                     </Row>
                 </Card.Header>
@@ -76,7 +97,7 @@ export default function Editor() {
                             <th>Category</th>
                             <th>English</th>
                             <th>French</th>
-                            <th>{windowWidth < 650 ? 'St.' : 'Status'}</th>
+                            <th>{windowWidth < 650 ? 'Pr.' : 'Progress'}</th>
                             <th>Edit</th>
                         </tr>
                         </thead>

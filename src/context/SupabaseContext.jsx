@@ -20,7 +20,7 @@ export const SupabaseProvider = ({children}) => {
     );
 };
 
-
+// required prop can be any renderable React node.  SupabaseProvider component must always be wrapped around some child elements.
 SupabaseProvider.propTypes = {
     children: PropTypes.node.isRequired,
 };

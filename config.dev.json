@@ -1,6 +1,5 @@
 {
   "supabase": {
-    // "url": "https://vczujjkevpnxzpswkhjv.supabase.co",
     "url": "https://vczujjkevpnxzpswkhjv.supabase.co",
     "public_key": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZjenVqamtldnBueHpwc3draGp2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDU5NDYwNTYsImV4cCI6MjAyMTUyMjA1Nn0.o6SsEPWD9Wy3HvvJ-edgtuZt7geONd94Mia609bBQ2Y"
   }
