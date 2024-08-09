@@ -49,7 +49,7 @@ export default function NewFlashcardForm({handleAdd, ...otherProps}) {
                         <Form.Label>French</Form.Label>
                         <Form.Control type="text" name="def"/>
                     </Form.Group>
-                    <Button variant="primary" type="submit" size="sm">Add</Button>
+                    <Button variant="primary" data-action="add" type="submit" size="sm">Add</Button>
                     {showErrorMessage && <ErrorMessage setShowErrorMessage={setShowErrorMessage} />}
                 </Form>
             </Modal.Body>

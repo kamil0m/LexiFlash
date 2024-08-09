@@ -34,15 +34,15 @@ export default function Editor() {
         setFlashcards(data);
     }
 
-    function handleAdd(newFlashcard){
-        addFlashcard(client, newFlashcard);
-        setFlashcards(prevState => [...prevState, newFlashcard]);
-    }
+    // function handleAdd(newFlashcard){
+    //     console.log("handleAdd activated")
+    //     addFlashcard(client, newFlashcard);
+    //     setFlashcards(prevState => [...prevState, newFlashcard]);
+    // }
 
     async function handleAddTest(){
         await addTestFlashcard(client);
         location.reload()
-        // setFlashcards(prevState => [...prevState, newFlashcard]);
     }
 
     // const handleRemove = (event) => {
@@ -61,22 +61,24 @@ export default function Editor() {
         setFlashcards((prevState) => [...prevState, editedFlashcard]);
     }
 
-    const handleAction = (e) => {
+    const handleAction = (e, newFlashcard) => {
         const action = e.target.closest('[data-action]').dataset.action;
         console.log(action);
-        // console.log(e.target.dataset.action);
-        // console.log(e.target.closest('[data-action]').dataset.action);
-        // console.log(e.target.dataset.closest('[data-action]'.dataset.action));
-        // const action = e.target.dataset.get('action');
-        // const action = e.target.dataset.acction/
         switch (action) {
             case "remove":
                 if (undefined === event.target.parentNode.parentNode.id) {
                     return
                 }
-                const id = event.target.closest('[id]').id
+                const id = event.target.closest('[id]').id;
                 removeFlashcard(client, id);
-                setFlashcards((prevState) => prevState.filter((flashcard) => flashcard.id != id))
+                setFlashcards((prevState) => prevState.filter((flashcard) => flashcard.id != id));
+                break;
+            case "add" :
+                console.log("add case activated");
+                addFlashcard(client, newFlashcard);
+                setFlashcards(prevState => [...prevState, newFlashcard]);
+                break;
+            
         }
     }
 
@@ -87,7 +89,7 @@ export default function Editor() {
                     <Row className="justify-content-between align-items-center">
                         <h4 className="col-6 mb-0">Flashcards list</h4>
                         <button onClick={handleAddTest}>Test</button>
-                        <NewFlashcardButton handleAdd={handleAdd}/>
+                        <NewFlashcardButton handleAdd={handleAction}/>
                     </Row>
                 </Card.Header>
                 <Card.Body>

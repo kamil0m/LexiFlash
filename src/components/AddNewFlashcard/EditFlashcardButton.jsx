@@ -38,7 +38,7 @@ export default function EditFlashcardButton({flashcard, handleEdit}) {
 
     return (
         <>
-            <Button className="col-5 mb-0" variant="primary" onClick={() => modalShowToggle()}>
+            <Button className="col-5 mb-0" variant="primary" data-action="edit" onClick={() => modalShowToggle()}>
                 <i className="fa-regular fa-pen-to-square"></i>
             </Button>
 
@@ -48,7 +48,6 @@ export default function EditFlashcardButton({flashcard, handleEdit}) {
                 show={modalShow}
                 onHide={modalShowToggle}
             >
-
             </EditFlashcardForm>
         </>
     )
