@@ -28,7 +28,7 @@ import EditFlashcardForm from "./EditFlashcardForm.jsx";
 //     )
 // }
 
-export default function EditFlashcardButton({flashcard, handleEdit}) {
+export default function EditFlashcardButton({flashcard, handleAction}) {
 
     const [modalShow, setModalShow] = useState(false);
 
@@ -38,13 +38,13 @@ export default function EditFlashcardButton({flashcard, handleEdit}) {
 
     return (
         <>
-            <Button className="col-5 mb-0" variant="primary" data-action="edit" onClick={() => modalShowToggle()}>
+            <Button className="col-5 mb-0" variant="primary" onClick={() => modalShowToggle()}>
                 <i className="fa-regular fa-pen-to-square"></i>
             </Button>
 
             <EditFlashcardForm
                 flashcard={flashcard}
-                handleEdit={handleEdit}
+                handleAction={handleAction}
                 show={modalShow}
                 onHide={modalShowToggle}
             >

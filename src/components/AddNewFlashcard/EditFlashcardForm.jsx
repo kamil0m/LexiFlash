@@ -2,7 +2,7 @@ import {Button, Form, Modal} from "react-bootstrap";
 import ErrorMessage from "./ErrorMessage.jsx";
 import {useState} from "react";
 
-export default function EditFlashcardForm({flashcard, handleEdit, ...otherProps}) {
+export default function EditFlashcardForm({flashcard, handleAction, ...otherProps}) {
     const [showErrorMessage, setShowErrorMessage] = useState(false)
     const [category, setCategory] = useState(flashcard.category)
     const [lex, setLex] = useState(flashcard.lex)
@@ -10,12 +10,15 @@ export default function EditFlashcardForm({flashcard, handleEdit, ...otherProps}
 
     function handleSubmit(event) {
         event.preventDefault();
-        console.log(event.currentTarget.elements.category.value)
+        // console.log(event.currentTarget.elements.category.value)
+        const editForm = event.target.closest('.editForm');
+        // console.log(event.target.closest('.editForm').querySelector('input[name="category"]'));
+        console.log(editForm.querySelector('input[name="category"]').value);
         const editedFlashcard = {
             "id": flashcard.id,
-            "category": event.currentTarget.elements.category.value,
-            "lex": event.currentTarget.elements.lex.value,
-            "def": event.currentTarget.elements.def.value,
+            "category": editForm.querySelector('input[name="category"]').value,
+            "lex": editForm.querySelector('input[name="lex"]').value,
+            "def": editForm.querySelector('input[name="def"]').value,
             "status": flashcard.status
         };
         console.log(editedFlashcard);
@@ -26,7 +29,8 @@ export default function EditFlashcardForm({flashcard, handleEdit, ...otherProps}
         }
         console.log("podajemy editedFlashcard do bazy danych");
         console.log(editedFlashcard.id);
-        handleEdit(editedFlashcard);
+        // handleEdit(editedFlashcard);
+        handleAction(event, editedFlashcard);
         // handleEdit(editedFlashcard);
     }
 
@@ -44,7 +48,7 @@ export default function EditFlashcardForm({flashcard, handleEdit, ...otherProps}
             </Modal.Header>
             <Modal.Body>
                 {/*<h1>{flashcard}</h1>*/}
-                <Form className="mb-4" onSubmit={(event) => handleSubmit(event)}>
+                <Form className="mb-4 editForm" onSubmit={(event) => handleSubmit(event)}>
                     <Form.Group className="mb-3">
                         <Form.Label>Category</Form.Label>
                         <Form.Control
@@ -72,7 +76,9 @@ export default function EditFlashcardForm({flashcard, handleEdit, ...otherProps}
                             onChange={(e) => setDef(e.target.value)}
                         />
                     </Form.Group>
-                    <Button variant="primary" type="submit" size="sm">Save</Button>
+                    <Button variant="primary" type="submit" size="sm" data-action="edit" onClick={(event) => handleSubmit(event)} >Save</Button>
+                    {/* <button type="submit" data-action="edit">Save</button> */}
+                    {/* <button className="btn btn-danger col-5 mb-0" data-action="edit" onClick={(event) => handleSubmit(event)}><i className="fa-regular fa-trash-can"></i></button> */}
                     {showErrorMessage && <ErrorMessage setShowErrorMessage={setShowErrorMessage} />}
                 </Form>
             </Modal.Body>
