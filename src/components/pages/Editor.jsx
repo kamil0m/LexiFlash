@@ -55,7 +55,7 @@ export default function Editor() {
     // }
 
     const handleEdit = (editedFlashcard) => {
-        console.log(e.target);
+        // console.log(e.target);
         editFlashcard(client, editedFlashcard)
         setFlashcards((prevState) => prevState.filter((flashcard) => flashcard.id !== editedFlashcard.id))
         setFlashcards((prevState) => [...prevState, editedFlashcard]);
@@ -104,8 +104,8 @@ export default function Editor() {
                         </tr>
                         </thead>
                         <tbody>
-                        <ListFlashcards flashcards={flashcards} handleAction={handleAction}/>
-                        {/*<ListFlashcards flashcards={flashcards} handleRemove={handleRemove} handleEdit={handleEdit}/>*/}
+                        <ListFlashcards flashcards={flashcards} handleAction={handleAction} handleEdit={handleEdit} />
+                        {/* <ListFlashcards flashcards={flashcards} handleRemove={handleRemove} handleEdit={handleEdit}/> */}
                         </tbody>
                     </Table>
                 </Card.Body>

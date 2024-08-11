@@ -26,7 +26,8 @@ export default function EditFlashcardForm({flashcard, handleEdit, ...otherProps}
         }
         console.log("podajemy editedFlashcard do bazy danych");
         console.log(editedFlashcard.id);
-        handleEdit(editedFlashcard)
+        handleEdit(editedFlashcard);
+        // handleEdit(editedFlashcard);
     }
 
     return (
