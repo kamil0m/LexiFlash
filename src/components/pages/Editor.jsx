@@ -52,9 +52,6 @@ export default function Editor() {
         console.log(action);
         switch (action) {
             case "remove":
-                if (undefined === event.target.parentNode.parentNode.id) {
-                    return
-                }
                 const id = event.target.closest('[id]').id;
                 removeFlashcard(client, id);
                 setFlashcards((prevState) => prevState.filter((flashcard) => flashcard.id != id));
@@ -69,6 +66,7 @@ export default function Editor() {
                 editFlashcard(client, newFlashcard)
                 setFlashcards((prevState) => prevState.filter((flashcard) => flashcard.id !== newFlashcard.id))
                 setFlashcards((prevState) => [...prevState, newFlashcard]);
+                break;
         }
     }
 
@@ -78,7 +76,7 @@ export default function Editor() {
                 <Card.Header>
                     <Row className="justify-content-between align-items-center">
                         <h4 className="col-6 mb-0">Flashcards list</h4>
-                        <button onClick={handleAddTest}>Add a test flashcard</button>
+                        {/* <button onClick={handleAddTest}>Add a test flashcard</button> */}
                         <NewFlashcardButton handleAdd={handleAction}/>
                     </Row>
                 </Card.Header>
@@ -94,9 +92,7 @@ export default function Editor() {
                         </tr>
                         </thead>
                         <tbody>
-                        {/* <ListFlashcards flashcards={flashcards} handleAction={handleAction} handleEdit={handleEdit} /> */} 
                         <ListFlashcards flashcards={flashcards} handleAction={handleAction} />
-                        {/* <ListFlashcards flashcards={flashcards} handleRemove={handleRemove} handleEdit={handleEdit}/> */}
                         </tbody>
                     </Table>
                 </Card.Body>

@@ -10,9 +10,7 @@ export default function EditFlashcardForm({flashcard, handleAction, ...otherProp
 
     function handleSubmit(event) {
         event.preventDefault();
-        // console.log(event.currentTarget.elements.category.value)
         const editForm = event.target.closest('.editForm');
-        // console.log(event.target.closest('.editForm').querySelector('input[name="category"]'));
         console.log(editForm.querySelector('input[name="category"]').value);
         const editedFlashcard = {
             "id": flashcard.id,
@@ -29,9 +27,7 @@ export default function EditFlashcardForm({flashcard, handleAction, ...otherProp
         }
         console.log("podajemy editedFlashcard do bazy danych");
         console.log(editedFlashcard.id);
-        // handleEdit(editedFlashcard);
         handleAction(event, editedFlashcard);
-        // handleEdit(editedFlashcard);
     }
 
     return (
@@ -77,8 +73,6 @@ export default function EditFlashcardForm({flashcard, handleAction, ...otherProp
                         />
                     </Form.Group>
                     <Button variant="primary" type="submit" size="sm" data-action="edit" onClick={(event) => handleSubmit(event)} >Save</Button>
-                    {/* <button type="submit" data-action="edit">Save</button> */}
-                    {/* <button className="btn btn-danger col-5 mb-0" data-action="edit" onClick={(event) => handleSubmit(event)}><i className="fa-regular fa-trash-can"></i></button> */}
                     {showErrorMessage && <ErrorMessage setShowErrorMessage={setShowErrorMessage} />}
                 </Form>
             </Modal.Body>
