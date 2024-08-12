@@ -34,17 +34,10 @@ export default function Editor() {
         setFlashcards(data);
     }
 
-    // function handleAdd(newFlashcard){
-    //     console.log("handleAdd activated")
-    //     addFlashcard(client, newFlashcard);
-    //     setFlashcards(prevState => [...prevState, newFlashcard]);
-    // }
-
     async function handleAddTest(){
         await addTestFlashcard(client);
         location.reload()
     }
-
 
     const handleAction = (e, newFlashcard) => {
         console.log(e.target.closest('[data-action]'));
@@ -77,7 +70,7 @@ export default function Editor() {
                     <Row className="justify-content-between align-items-center">
                         <h4 className="col-6 mb-0">Flashcards list</h4>
                         {/* <button onClick={handleAddTest}>Add a test flashcard</button> */}
-                        <NewFlashcardButton handleAdd={handleAction}/>
+                        <NewFlashcardButton handleAction={handleAction}/>
                     </Row>
                 </Card.Header>
                 <Card.Body>

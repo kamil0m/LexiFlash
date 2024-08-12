@@ -11,7 +11,6 @@ export default function EditFlashcardForm({flashcard, handleAction, ...otherProp
     function handleSubmit(event) {
         event.preventDefault();
         const editForm = event.target.closest('.editForm');
-        console.log(editForm.querySelector('input[name="category"]').value);
         const editedFlashcard = {
             "id": flashcard.id,
             "category": editForm.querySelector('input[name="category"]').value,

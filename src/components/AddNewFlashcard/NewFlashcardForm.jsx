@@ -2,16 +2,16 @@ import {Button, Form, Modal} from "react-bootstrap";
 import ErrorMessage from "./ErrorMessage.jsx";
 import {useState} from "react";
 
-export default function NewFlashcardForm({handleAdd, ...otherProps}) {
+export default function NewFlashcardForm({handleAction, ...otherProps}) {
     const [showErrorMessage, setShowErrorMessage] = useState(false);
 
     function handleSubmit(event) {
         event.preventDefault();
-        console.log(event.currentTarget.elements.category.value)
+        const editForm = event.target.closest('.editForm');
         const newFlashcard = {
-            "category": event.currentTarget.elements.category.value,
-            "lex": event.currentTarget.elements.lex.value,
-            "def": event.currentTarget.elements.def.value,
+            "category": editForm.querySelector('input[name="category"]').value,
+            "lex": editForm.querySelector('input[name="lex"]').value,
+            "def": editForm.querySelector('input[name="def"]').value,
             "status": 0
         };
         console.log(newFlashcard);
@@ -20,7 +20,7 @@ export default function NewFlashcardForm({handleAdd, ...otherProps}) {
             return
         }
         console.log("podajemy newFlashcard do bazy danych");
-        handleAdd(newFlashcard)
+        handleAction(event, newFlashcard)
     }
 
     return (
@@ -36,7 +36,7 @@ export default function NewFlashcardForm({handleAdd, ...otherProps}) {
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Form className="mb-4" onSubmit={(event) => handleSubmit(event)}>
+                <Form className="mb-4 editForm" onSubmit={(event) => handleSubmit(event)}>
                     <Form.Group className="mb-3">
                         <Form.Label>Category</Form.Label>
                         <Form.Control type="text" name="category" />
@@ -49,7 +49,7 @@ export default function NewFlashcardForm({handleAdd, ...otherProps}) {
                         <Form.Label>French</Form.Label>
                         <Form.Control type="text" name="def"/>
                     </Form.Group>
-                    <Button variant="primary" data-action="add" type="submit" size="sm">Add</Button>
+                    <Button variant="primary" type="submit" size="sm" data-action="add" onClick={(event) => handleSubmit(event)} >Add</Button>
                     {showErrorMessage && <ErrorMessage setShowErrorMessage={setShowErrorMessage} />}
                 </Form>
             </Modal.Body>

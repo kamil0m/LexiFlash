@@ -2,7 +2,7 @@ import {Button} from 'react-bootstrap';
 import {useState} from "react";
 import NewFlashcardForm from "./NewFlashcardForm.jsx";
 
-export default function NewFlashcardButton({handleAdd}) {
+export default function NewFlashcardButton({handleAction}) {
 
     const [modalShow, setModalShow] = useState(false);
 
@@ -17,7 +17,7 @@ export default function NewFlashcardButton({handleAdd}) {
             </Button>
 
             <NewFlashcardForm
-                handleAdd={handleAdd}
+                handleAction={handleAction}
                 show={modalShow}
                 onHide={modalShowToggle}
             >
