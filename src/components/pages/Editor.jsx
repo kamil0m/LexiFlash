@@ -40,9 +40,7 @@ export default function Editor() {
     }
 
     const handleAction = (e, newFlashcard) => {
-        console.log(e.target.closest('[data-action]'));
         const action = e.target.closest('[data-action]').dataset.action;
-        console.log(action);
         switch (action) {
             case "remove":
                 const id = event.target.closest('[id]').id;
@@ -50,12 +48,10 @@ export default function Editor() {
                 setFlashcards((prevState) => prevState.filter((flashcard) => flashcard.id != id));
                 break;
             case "add" :
-                console.log("add case activated");
                 addFlashcard(client, newFlashcard);
                 setFlashcards(prevState => [...prevState, newFlashcard]);
                 break;
             case "edit" :
-                console.log("edit case activated");
                 editFlashcard(client, newFlashcard)
                 setFlashcards((prevState) => prevState.filter((flashcard) => flashcard.id !== newFlashcard.id))
                 setFlashcards((prevState) => [...prevState, newFlashcard]);

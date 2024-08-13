@@ -14,12 +14,10 @@ export default function NewFlashcardForm({handleAction, ...otherProps}) {
             "def": editForm.querySelector('input[name="def"]').value,
             "status": 0
         };
-        console.log(newFlashcard);
         if (!newFlashcard.category || !newFlashcard.lex || !newFlashcard.def) {
             setShowErrorMessage(true);
             return
         }
-        console.log("podajemy newFlashcard do bazy danych");
         handleAction(event, newFlashcard)
     }
 

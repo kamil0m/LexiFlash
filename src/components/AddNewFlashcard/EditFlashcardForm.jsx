@@ -18,14 +18,10 @@ export default function EditFlashcardForm({flashcard, handleAction, ...otherProp
             "def": editForm.querySelector('input[name="def"]').value,
             "status": flashcard.status
         };
-        console.log(editedFlashcard);
         if (!editedFlashcard.category || !editedFlashcard.lex || !editedFlashcard.def) {
             setShowErrorMessage(true);
-            console.log("wlacza sie return");
             return
         }
-        console.log("podajemy editedFlashcard do bazy danych");
-        console.log(editedFlashcard.id);
         handleAction(event, editedFlashcard);
     }
 
