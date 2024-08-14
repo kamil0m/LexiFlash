@@ -9,19 +9,20 @@ Backend: Supabase server
 Styling: Bootstrap Library
 
 --Installation and Setup--
-No installation is required as the app operates directly in the browser. To try the demo, visit lexiflash.vercel.app. For setting up your own user:
+No installation is required as the app operates directly in the browser. To try the demo, visit lexiflash.vercel.app. 
+For setting up your own user:
 -Replace the Supabase server.
 -Edit the config.dev.json file with your configuration.
 
 --Usage--
 -Learning Mode
-Users are presented with a word or expression and must type it in the chosen language.
+Users are presented with a word or expression and must type its equivalent in another language.
 Upon submission:
 If the answer is correct, the next word is shown.
 If the answer is incorrect, the correct answer is briefly displayed before the user can try again.
 A word is considered learned after five consecutive correct answers.
 -Edit Mode
-Users can manage their vocabulary sets by adding, editing, or deleting entries.
+Users can manage their vocabulary sets by adding, editing, or deleting entries in the vocabulary bank.
 
 --Demo--
 A demo version for a single user is available at lexiflash.vercel.app.
@@ -30,13 +31,12 @@ A demo version for a single user is available at lexiflash.vercel.app.
 Customizable Vocabulary Sets: Users can add their own vocabulary lists.
 Progress Tracking: Keep track of learning progress.
 Instant Feedback: Incorrect answers are corrected immediately, allowing users to retry until correct.
-Forced Correct Answers: Users can mark answers as correct if needed.
 Adaptive Learning: The vocabulary set adjusts dynamically based on user progress.
 
 --Challenges and Learning--
 Database Integration: Successfully connected to a Supabase database.
 React Context Hooks: Implemented context hooks in React for state management.
-Future Enhancements: Plans include multiple user accounts, password protection, and personalized settings like adjustable time limits.
+Future Enhancements: Plans include multiple user accounts, password protection, and personalized settings like adjustable time limits and a possibility of forcing an answer as correct.
 
 --Contact Information--
 Author: Kamil Markowski

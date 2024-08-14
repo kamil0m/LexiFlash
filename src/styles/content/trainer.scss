@@ -25,6 +25,7 @@
     border-radius: shapes.$radius-main;
     transition: transform 1.5s;
     transform-style: preserve-3d;
+    font-size: 2rem;
   }
 }
 
@@ -40,7 +41,7 @@
   background-repeat: no-repeat;
   background-size: contain;
   background-position: bottom;
-  background-image: url("../../assets/logo_IA_blanc_vect.svg");
+  // background-image: url("../../assets/logo_IA_blanc_vect.svg");
   filter: invert(40%);
 }
 
