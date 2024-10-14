@@ -3,7 +3,7 @@ import EditFlashcardButton from "../AddNewFlashcard/EditFlashcardButton.jsx";
 export default function ListFlashcards({flashcards, handleAction}) {
     return flashcards.map((flashcard, index) => (
         <tr key={index} id={flashcard.id}>
-            <td>{flashcard.category} {index}</td>
+            <td>{flashcard.category}</td>
             <td>{flashcard.lex}</td>
             <td>{flashcard.def}</td>
             <td>{flashcard.status}</td>
