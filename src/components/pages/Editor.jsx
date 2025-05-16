@@ -34,10 +34,6 @@ export default function Editor() {
         setFlashcards(data);
     }
 
-    async function handleAddTest(){
-        await addTestFlashcard(client);
-        location.reload()
-    }
 
     const handleAction = (e, newFlashcard) => {
         const action = e.target.closest('[data-action]').dataset.action;

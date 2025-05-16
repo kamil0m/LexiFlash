@@ -8,7 +8,7 @@ export default function MainLayout() {
     return (
         <>
             <Navbar className="header">
-                <Container className="col-12 col-lg-8 mx-auto nav">
+                <Container className="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-4 mx-auto nav">
                     <Navbar.Brand>
                         <NavLink to="/" className="logo" >
                             <i className="fa-solid fa-bolt logo__icon" />
@@ -22,7 +22,7 @@ export default function MainLayout() {
                 </Container>
             </Navbar>
 
-            <Container className="col-12 col-lg-8 mx-auto main__container">
+            <Container className="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-4 mx-auto main__container pt-4">
                 <Outlet/>
             </Container>
         </>
