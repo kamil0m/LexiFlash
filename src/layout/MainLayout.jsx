@@ -1,4 +1,5 @@
 import {Container, Navbar} from "react-bootstrap";
+import ErrorBoundary from "../components/ErrorBoundary";
 import {
     NavLink,
     Outlet
@@ -23,7 +24,9 @@ export default function MainLayout() {
             </Navbar>
 
             <Container className="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-4 mx-auto main__container pt-4">
-                <Outlet/>
+                <ErrorBoundary>
+                    <Outlet/>
+                </ErrorBoundary>
             </Container>
         </>
     )
